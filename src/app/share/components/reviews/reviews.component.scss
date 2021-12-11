@@ -1,0 +1,74 @@
+.review-box {
+  padding: 20px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  .name {
+    padding-left: 10px;
+    min-height: 40px;
+    border: 1px solid lightgrey;
+  }
+
+  .text {
+    padding-left: 10px;
+    margin-top: 20px;
+    min-height: 80px;
+    border: 1px solid lightgrey;
+
+  }
+.bottom{
+  display: flex;
+  justify-content: flex-end;
+}
+  button {
+    border: 1px solid lightgrey;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 35px;
+    margin-top: 20px;
+    justify-content: flex-end;
+  }
+/*************/
+    .icons{
+      display: flex;
+      justify-content: end;
+      span{
+        margin-right: 10px;
+        cursor: pointer;
+        img{
+          width: 12px;
+        }
+    }
+    }
+    .data-container{
+      display: flex;
+      .data{
+        display: flex;
+        flex-direction: column;
+
+      }
+    }
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+}
+
