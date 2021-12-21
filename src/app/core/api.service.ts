@@ -1,8 +1,6 @@
-import { Injectable } from '@angular/core';
-;
-import {forkJoin, Observable, of} from "rxjs";
+import { Injectable } from '@angular/core';import { Observable, of} from "rxjs";
 import {mergeMap} from "rxjs/operators";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Ivvt} from "../../../model/models";
 
 @Injectable({

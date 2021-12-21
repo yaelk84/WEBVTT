@@ -18,17 +18,20 @@ export class DataService {
       end:vvtItem.end,
       part: this.textConvert(vvtItem.part),
       speaker:speaker,
-      hideSpeaker:hideSpeaker
+      hideSpeaker:hideSpeaker,
+      heightByTime:'0'
     }
   }
-  data(speakers:string[],vvtData: Ivvt[]): any{
+
+  getFormattedData(speakers:string[],vvtData: Ivvt[]): IvvtDisplay[]{
     let  vvtDiplay: IvvtDisplay[] = [];
     vvtData.forEach((item,index)=>{
+      // group by speaker
       const isHide = vvtDiplay.length > 0 && vvtDiplay[index-1] && speakers[index] === vvtDiplay[index-1].speaker ;
-      vvtDiplay.push(this.getItem( item,speakers[index],isHide))
+      vvtDiplay.push(this.getItem( item,speakers[index],isHide));
 
-    })
-    console.log(vvtDiplay)
+    });
+
     return vvtDiplay
 
 

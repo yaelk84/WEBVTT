@@ -1,7 +1,4 @@
-export interface Ireview{
-  title:string;
-  text:string
-}
+
 export interface Ivvt{
   start:number;
   end:number;
@@ -14,5 +11,6 @@ export interface IvvtDisplay{
   end:number;
   part:string;
   speaker:string;
-  hideSpeaker:boolean
+  hideSpeaker:boolean;
+  heightByTime: string;
 }

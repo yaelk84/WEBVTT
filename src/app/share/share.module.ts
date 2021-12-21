@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ScrollerComponent } from './scroller/scroller.component';
-import { CalcHeightPipe } from './pipes/calc-height.pipe';
+
+
 
 
 
@@ -15,9 +15,8 @@ import { CalcHeightPipe } from './pipes/calc-height.pipe';
 
   ],
   exports: [
-    ScrollerComponent,
-    CalcHeightPipe
+
   ],
-  declarations: [ScrollerComponent, CalcHeightPipe]
+  declarations: []
 })
 export class ShareModule { }
