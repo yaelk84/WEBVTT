@@ -1,23 +1,43 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable, of} from "rxjs";
+;
+import {forkJoin, Observable, of} from "rxjs";
 import {mergeMap} from "rxjs/operators";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Ivvt} from "../../../model/models";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+
+
+  private vttToJson = require("vtt-to-json");
   constructor(private http: HttpClient) { }
 
-  public getAvatar(): Observable<any> {
+  private formatVvt(response): Observable<any>{
+        return this.vttToJson(response)
+     };
 
-    return this.http.get('/assets/stub/division.json').pipe(
-      mergeMap((response: { divisions: [] }) => {
-        const auto = [];
-        return of(auto);
+  public getBridgeTx(): Observable<Ivvt[]> {
+    return this.http.get('/assets/stubs/bridge.vtt', {responseType: 'text'}).pipe(
+      mergeMap((response) => {
+      return this.formatVvt(response)
+      })
+    );
+  }
+
+  public getCharacters(): Observable<string[]> {
+    return this.http.get('/assets/stubs/characters.json').pipe(
+      mergeMap((response: string[]) => {
+        return of(response);
+
+
 
       })
     );
   }
+
+
+
 }

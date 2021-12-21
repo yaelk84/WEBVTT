@@ -1,2 +1,16 @@
+<div class="container" *ngIf="render">
+  <div class="d-flex justify-content-center ">
+    <virtual-scroller #scroll [items]="data" [enableUnequalChildrenSizes]="true">
+      <div *ngFor="let item of scroll.viewPortItems" class="item">
+        <b *ngIf="!item.hideSpeaker">{{item.speaker}}</b>
+        <pre  [innerHTML]="item.part"></pre>
+
+        <div class="progress" [ngStyle]="{'height': transform(item.start,item.end)}"></div>
+      </div>
 
 
+    </virtual-scroller>
+
+  </div>
+
+</div>

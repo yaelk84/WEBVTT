@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import {ShareModule} from "../../share/share.module";
+import {VirtualScrollerModule} from "ngx-virtual-scroller";
 
 
 
@@ -14,7 +15,8 @@ import {ShareModule} from "../../share/share.module";
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ShareModule
+    ShareModule,
+    VirtualScrollerModule
   ]
 })
 export class HomeModule { }

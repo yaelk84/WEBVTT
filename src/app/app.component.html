@@ -1,14 +1,1 @@
-<div class="bg">
-
-  <div class="review-container" *ngIf="loadData" >
-    <h1>User Review</h1>
-    <ng-container *ngIf="reviews">
-      <app-reviews *ngFor="let review of reviews;let i = index" (changeReviewCb)="updatelocalStorage()" [review]="review" (deleteReview)="delete(i)"></app-reviews>
-    </ng-container>
-
-    <app-reviews (changeReviewCb)="add($event)" [review]="reviewToAdd" [isNew]="true"></app-reviews>
-
-  </div>
-
-</div>
-
+<router-outlet></router-outlet>

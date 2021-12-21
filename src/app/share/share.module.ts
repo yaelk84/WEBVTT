@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ReviewsComponent } from './components/reviews/reviews.component';
-
-
+import { ScrollerComponent } from './scroller/scroller.component';
+import { CalcHeightPipe } from './pipes/calc-height.pipe';
 
 
 
 @NgModule({
-  declarations: [ReviewsComponent],
+
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -16,7 +15,9 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 
   ],
   exports: [
-    ReviewsComponent
-  ]
+    ScrollerComponent,
+    CalcHeightPipe
+  ],
+  declarations: [ScrollerComponent, CalcHeightPipe]
 })
 export class ShareModule { }

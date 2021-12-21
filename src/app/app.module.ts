@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {ShareModule} from "./share/share.module";
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -19,7 +20,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ShareModule
+    ShareModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+
+
+
 
 
   ],

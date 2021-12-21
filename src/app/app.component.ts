@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Ireview} from "../../model/models";
 import {CONSTANTS} from "./constants";
+import {element} from "protractor";
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,25 @@ export class AppComponent implements OnInit{
   reviews: Ireview[];
   reviewToAdd:Ireview ={title:'',text:''};
   loadData = false;
+  @ViewChild('myDiv') myDiv: ElementRef;
 
-
+ counter=0;
   ngOnInit(): void {
+    setTimeout(()=>{
+
+
+
+    },20)
+
     this.reviews = this.getReviews();
     this.initReviewToAdd()
     this.loadData = true;
 
+  }
+
+  oncel(){
+    this.myDiv.nativeElement.style.color = 'red';
+    this.myDiv.nativeElement.style.marginLeft =   '300px';
   }
 initReviewToAdd(){
     this.reviewToAdd.title ='';
@@ -47,5 +60,22 @@ console.log(review)
 
   updatelocalStorage(){
     localStorage.setItem(CONSTANTS.REVIEWS,JSON.stringify(this.reviews));
+
+}
+dd(){
+  this.myDiv.nativeElement.style.transform =  'translateX(0)';
+  this.myDiv.nativeElement.style.marginLeft =  '0';
+}
+
+bb(){
+
+    this.myDiv.nativeElement.style.transform =  'translateX(300px)';
+
+  }
+  cc(){
+
+
+    this.myDiv.nativeElement.style.marginLeft =  '300px';
+
   }
 }
