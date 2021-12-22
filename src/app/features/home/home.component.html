@@ -3,7 +3,7 @@
     <virtual-scroller #scroll [items]="data" [enableUnequalChildrenSizes]="true" >
       <div *ngFor="let item of scroll.viewPortItems" class="item">
         <b class="speaker" *ngIf="!item.hideSpeaker">{{item.speaker}}</b>
-        <pre class="text"  [innerHTML]="item.start | date:'mm:ss:SSS'"></pre>
+        <pre class="text"  [innerHTML]="item.part"></pre>
         <div class="progress" [ngStyle]="{'height': item.heightByTime}"></div>
       </div>
 
@@ -15,4 +15,4 @@
 </div>
 
 {{counter | date:'mm:ss:SSS'}}
-{{counter}}
+
