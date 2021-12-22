@@ -2,8 +2,8 @@
   <div class="d-flex justify-content-center ">
     <virtual-scroller #scroll [items]="data" [enableUnequalChildrenSizes]="true" >
       <div *ngFor="let item of scroll.viewPortItems" class="item">
-        <b *ngIf="!item.hideSpeaker">{{item.speaker}}</b>
-        <pre  [innerHTML]="item.part"></pre>
+        <b class="speaker" *ngIf="!item.hideSpeaker">{{item.speaker}}</b>
+        <pre class="text"  [innerHTML]="item.start | date:'mm:ss:SSS'"></pre>
         <div class="progress" [ngStyle]="{'height': item.heightByTime}"></div>
       </div>
 
@@ -13,3 +13,6 @@
   </div>
 
 </div>
+
+{{counter | date:'mm:ss:SSS'}}
+{{counter}}

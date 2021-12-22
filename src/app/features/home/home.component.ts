@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from "../../core/api.service";
 import {forkJoin, Subscription, timer} from "rxjs";
 import {DataService} from "../../core/data.service";
@@ -19,9 +19,11 @@ export class HomeComponent implements OnInit {
   counter = 0;
   tick = 1;
   data: IvvtDisplay[]= [];
+  date: Date;
   @ViewChild('scroll') scroll:VirtualScrollerComponent;
 
-  constructor(private server:ApiService, private  dataService: DataService) { }
+  constructor(private server:ApiService, private  dataService: DataService, private  zone: NgZone, private ref: ChangeDetectorRef) { }
+
 
   ngOnInit(): void {
 
@@ -30,21 +32,38 @@ export class HomeComponent implements OnInit {
           this.render = true;
       });
 
+    const date1 = Date.now();
 
-      this.countDown = timer(0, this.tick)
-            .subscribe(() => {
-              requestAnimationFrame(() => {
-                if(this.scroll && this.scroll.viewPortItems){
-                  this.scroll.viewPortItems.forEach((item:IvvtDisplay)=>{
-                    item.heightByTime =this.calcHeight(item.start,item.end);
-                  })
-                }
-                ++this.counter;
-              });
+    this.zone.runOutsideAngular(() => {
+      requestAnimationFrame(() => {
 
+        this.countDown =timer(0, this.tick).subscribe(()=>{
 
+          const date2 = Date.now();
+          const diffTime = Math.abs(+date2 - +date1);
+          if (diffTime > 10000){
+            this.countDown.unsubscribe()
+          }
+          this.counter = diffTime;
 
+          console.count();
+
+          if (this.scroll && this.scroll.viewPortItems) {
+            this.scroll.viewPortItems.forEach((item: IvvtDisplay) => {
+              item.heightByTime = this.calcHeight(item.start, item.end);
             })
+          }
+          this.ref.detectChanges()
+
+        })
+      });
+    });
+
+
+
+
+
+
 
 
   }
